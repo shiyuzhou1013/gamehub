@@ -1,6 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/6-NavBar";
 import GameGrid from "./components/9-GameGrid";
+import GenreList from "./components/17-GenreList";
 
 function App() {
   /** 5-Creating a Responsive Layout*/
@@ -26,7 +27,9 @@ function App() {
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside">Aside</GridItem>
+        <GridItem area="aside">
+          <GenreList />
+        </GridItem>
       </Show>
       <GridItem area="main">
         <GameGrid />
