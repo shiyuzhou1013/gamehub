@@ -4,6 +4,7 @@ import GameGrid from "./components/9-GameGrid";
 import GenreList from "./components/17-GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/17-useGenres";
+import PlatformSelector from "./components/23-PlatformSelector";
 
 function App() {
   /** 5-Creating a Responsive Layout*/
@@ -46,6 +47,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+        <PlatformSelector />
         <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>

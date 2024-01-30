@@ -37,6 +37,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
             {/* replace the text with button, so we can click on the genres */}
             {/* <Text fontSize="lg">{genre.name}</Text> */}
             <Button
+              // 22- Highlighting the Selected Genre
               fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               onClick={() => onSelectGenre(genre)}
               fontSize="lg"
