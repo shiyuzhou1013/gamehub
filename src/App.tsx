@@ -5,6 +5,7 @@ import GenreList from "./components/17-GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/17-useGenres";
 import PlatformSelector from "./components/23-PlatformSelector";
+import { Platform } from "./hooks/10-useGames";
 
 function App() {
   /** 5-Creating a Responsive Layout*/
@@ -23,6 +24,11 @@ function App() {
    * How we share state between two components? E.g. Genres and games --- We should lift it up to the closest parent
    * The Genres component should notify the app component to set the selected genre, as the component that holds some state should be the one updating it*/
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
+  /** 24 - Filtering Games by Platform*/
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
 
   return (
     <Grid
@@ -47,8 +53,14 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          selectedPlatform={selectedPlatform}
+          onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
+        />
+        <GameGrid
+          selectedPlatform={selectedPlatform}
+          selectedGenre={selectedGenre}
+        />
       </GridItem>
     </Grid>
   );
