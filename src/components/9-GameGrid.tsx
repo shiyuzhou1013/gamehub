@@ -4,6 +4,7 @@ import GameCard from "./11-GameCard";
 import GameCardSkeleton from "./15-GameCardSkeleton";
 import GameCardContainer from "./16-GameCardContainer";
 import { Genre } from "../hooks/17-useGenres";
+import { GameQuery } from "../App";
 
 /** 10- Moved to custom hook */
 // interface Game {
@@ -18,12 +19,15 @@ import { Genre } from "../hooks/17-useGenres";
 
 /** 21-Filtering Games by Genre */
 interface Props {
-  selectedGenre: Genre | null;
+  // selectedGenre: Genre | null;
   /** 24-Filtering Games by Platform */
-  selectedPlatform: Platform | null;
+  // selectedPlatform: Platform | null;
+
+  /** 25-Refactoring - Extracting a Query Object */
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ selectedPlatform, selectedGenre }: Props) => {
+const GameGrid = ({ gameQuery }: Props) => {
   /** 10- Moved to custom hook */
   //   const [games, setGames] = useState<Game[]>([]);
   //   const [error, setError] = useState("");
@@ -34,7 +38,7 @@ const GameGrid = ({ selectedPlatform, selectedGenre }: Props) => {
   //       .then((res) => setGames(res.data.results))
   //       .catch((err) => setError(err.message));
   //   });
-  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+  const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
