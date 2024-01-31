@@ -1,4 +1,5 @@
 import useData from "./18-useData";
+import genres from "../data/36-genres";
 
 export interface Genre {
   id: number;
@@ -6,7 +7,10 @@ export interface Genre {
   image_background: string;
 }
 
-const useGenres = () => useData<Genre>("/genres");
+/** 36-Shipping Static Data -- can also be applied to Platform drop down list*/
+// const useGenres = () => useData<Genre>("/genres"); -- change to:
+
+const useGenres = () => ({ data: genres, isLoading: false, error: null });
 
 export default useGenres;
 

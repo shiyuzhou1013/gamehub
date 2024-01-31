@@ -19,6 +19,7 @@ interface Props {
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
+  /** 36-Shipping Static Data -- the folowing two lines can be commented out or leave as before*/
   if (error) return null;
 
   if (isLoading) return <Spinner />;
