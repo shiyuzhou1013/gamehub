@@ -1,8 +1,7 @@
 import platforms from "../data/36-platforms";
 import { useQuery } from "@tanstack/react-query";
 import { Platform } from "./10-useGames";
-import { FetchResponse } from "./18-useData";
-import apiClient from "../services/9-api-client";
+import apiClient, { FetchResponse } from "../services/9-api-client";
 
 /** Advanced - 25-Exercise-Fetching Platforms */
 // const usePlatforms = () => useData<Platform>("/platforms/lists/parents");

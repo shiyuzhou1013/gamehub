@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/9-api-client";
-import { AxiosRequestConfig, CanceledError } from "axios";
-
-interface Genre {
-  id: number;
-  name: string;
-}
-
-/** Advanced - 24-Fetching Query */
+/** Removed to api-client 
 export interface FetchResponse<T> {
   count: number;
   results: T[];
 }
+*/
 
+/** Can be removed since we pallied ReactQuery
 const useData = <T>(
   endpoint: string,
   requestConfig?: AxiosRequestConfig,
@@ -53,3 +46,4 @@ const useData = <T>(
 };
 
 export default useData;
+*/
