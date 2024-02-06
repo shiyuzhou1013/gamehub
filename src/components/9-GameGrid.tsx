@@ -1,10 +1,11 @@
-import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { GameQuery } from "../App";
 import useGames from "../hooks/10-useGames";
 import GameCard from "./11-GameCard";
 import GameCardSkeleton from "./15-GameCardSkeleton";
 import GameCardContainer from "./16-GameCardContainer";
-import { GameQuery } from "../App";
-import React from "react";
 
 /** 10- Moved to custom hook */
 // interface Game {
@@ -50,39 +51,59 @@ const GameGrid = ({ gameQuery }: Props) => {
 
   if (error) return <Text>{error.message}</Text>;
 
+  /**  Advanced 30-Exercise-Implementing Infinite Scroll*/
+  const fetchedGamesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+
   return (
-    <Box padding="10px">
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeleton />
-            </GameCardContainer>
-          ))}
-        {/* Advanced - 29-Exercise-Implementing Infinite Queries */}
-        {data?.pages.map((page, index) => (
-          <React.Fragment key={index}>
-            {page.results.map((game) => (
-              <GameCardContainer key={game.id}>
-                <GameCard game={game}></GameCard>
+    <>
+      {/* Advanced 30-Exercise-Implementing Infinite Scroll
+      npm i react-infinite-scroll-component@6.1 */}
+      <InfiniteScroll
+        dataLength={fetchedGamesCount}
+        hasMore={!!hasNextPage}
+        next={() => fetchNextPage()}
+        loader={<Spinner />}
+      >
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+          spacing={6}
+          padding="10px"
+        >
+          {isLoading &&
+            skeletons.map((skeleton) => (
+              <GameCardContainer key={skeleton}>
+                <GameCardSkeleton />
               </GameCardContainer>
             ))}
-          </React.Fragment>
-        ))}
+          {/* Advanced - 29-Exercise-Implementing Infinite Queries */}
+          {data?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((game) => (
+                <GameCardContainer key={game.id}>
+                  <GameCard game={game}></GameCard>
+                </GameCardContainer>
+              ))}
+            </React.Fragment>
+          ))}
 
-        {/* Removed
+          {/* Removed
       {data?.results.map((game) => (
         <GameCardContainer key={game.id}>
           <GameCard game={game}></GameCard>
         </GameCardContainer>
       ))} */}
-      </SimpleGrid>
+        </SimpleGrid>
+      </InfiniteScroll>
+
+      {/* With infinite scroll, we no longer need the load button
+
       {hasNextPage && (
         <Button onClick={() => fetchNextPage()} marginY={5}>
           {isFetchingNextPage ? "Loading..." : "Load More"}
         </Button>
-      )}
-    </Box>
+      )} */}
+    </>
   );
 };
 
