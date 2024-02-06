@@ -7,7 +7,8 @@ interface Genre {
   name: string;
 }
 
-interface FetchResponse<T> {
+/** Advanced - 24-Fetching Query */
+export interface FetchResponse<T> {
   count: number;
   results: T[];
 }
