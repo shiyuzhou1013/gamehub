@@ -22,7 +22,7 @@ const useData = <T>(
 
       setLoading(true);
 
-      apiClient
+      apiClientP
         .get<FetchResponse<T>>(endpoint, {
           signal: controller.signal,
           ...requestConfig,
