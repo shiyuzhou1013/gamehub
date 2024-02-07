@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import genres from "../data/36-genres";
+import ms from "ms";
 import APIClient from "../services/9-api-client";
 
 /** Advanced - 28-Exercise-Creating a Reusable API Client */
@@ -23,7 +24,10 @@ const useGenres = () =>
     queryFn: apiClient.getAll,
     // () =>
     //   apiClient.get<FetchResponse<Genre>>("/genres").then((res) => res.data),
-    staleTime: 24 * 60 * 60 * 1000, //24 hours
+
+    /** Advanced 33-Exercise-Simplifying Time Caculations */
+    // staleTime: 24 * 60 * 60 * 1000, //24 hours
+    staleTime: ms("24h"),
     initialData: genres,
   });
 

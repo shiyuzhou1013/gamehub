@@ -1,6 +1,7 @@
 import platforms from "../data/36-platforms";
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/9-api-client";
+import ms from "ms";
 
 /** Advanced - 28-Exercise-Creating a Reusable API Client */
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");
@@ -22,7 +23,10 @@ const usePlatforms = () =>
     //   apiClient
     //     .get<FetchResponse<Platform>>("/platforms/lists/parents")
     //     .then((res) => res.data),
-    staleTime: 24 * 60 * 60 * 1000, //24 hours
+
+    /** Advanced 33-Exercise-Simplifying Time Caculations */
+    // staleTime: 24 * 60 * 60 * 1000, //24 hours
+    staleTime: ms("24h"),
     initialData: platforms,
   });
 
