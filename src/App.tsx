@@ -3,7 +3,6 @@ import NavBar from "./components/6-NavBar";
 import GameGrid from "./components/9-GameGrid";
 import GenreList from "./components/17-GenreList";
 import { useState } from "react";
-import { Genre } from "./hooks/17-useGenres";
 import PlatformSelector from "./components/23-PlatformSelector";
 import { Platform } from "./hooks/23-usePlatforms";
 import SortSelector from "./components/26-SortSelector";
@@ -11,8 +10,9 @@ import GameHeading from "./components/32-GameHeading";
 
 /** 25-Refactoring - Extracting a Query Object */
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  /** Advanced - 31-Exercise-Simplifying Query Objects */
+  genreId?: number;
+  platformId?: number;
   /** 27-Sorting Games */
   sortOrder: string;
   /** 31-Dearching Games */
@@ -64,8 +64,10 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenreId={gameQuery.genreId}
+            onSelectGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           />
         </GridItem>
       </Show>
@@ -75,9 +77,9 @@ function App() {
           <Flex marginBottom={5}>
             <Box marginRight={5}>
               <PlatformSelector
-                selectedPlatform={gameQuery.platform}
+                selectedPlatformId={gameQuery.platformId}
                 onSelectedPlatform={(platform) =>
-                  setGameQuery({ ...gameQuery, platform })
+                  setGameQuery({ ...gameQuery, platformId: platform.id })
                 }
               />
             </Box>
