@@ -1,0 +1,36 @@
+/** Part Two - 22-Exercise-Setting Up a Zustand Store */
+
+import { create } from "zustand";
+
+/** 25-Refactoring - Extracting a Query Object */
+interface GameQuery {
+  /** Advanced - 31-Exercise-Simplifying Query Objects */
+  genreId?: number;
+  platformId?: number;
+  /** 27-Sorting Games */
+  sortOrder?: string;
+  /** 31-Dearching Games */
+  searchText?: string;
+}
+
+/** Part Two - 22-Exercise-Setting Up a Zustand Store */
+interface GameQueryStore {
+  gameQuery: GameQuery;
+  setSearchText: (searchText: string) => void;
+  setGenreId: (genreId: number) => void;
+  setPlatformId: (platformId: number) => void;
+  setSortOrder: (sortOrder: string) => void;
+}
+
+const useGameQueryStore = create<GameQueryStore>((set) => ({
+  gameQuery: {},
+  setSearchText: (searchText) => set(() => ({ gameQuery: { searchText } })),
+  setGenreId: (genreId) =>
+    set((store) => ({ gameQuery: { ...store.gameQuery, genreId } })),
+  setPlatformId: (platformId) =>
+    set((store) => ({ gameQuery: { ...store.gameQuery, platformId } })),
+  setSortOrder: (sortOrder) =>
+    set((store) => ({ gameQuery: { ...store.gameQuery, sortOrder } })),
+}));
+
+export default useGameQueryStore;
