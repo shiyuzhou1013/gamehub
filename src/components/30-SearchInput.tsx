@@ -2,6 +2,7 @@ import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import useGameQueryStore from "../services/22-store";
+import { useNavigate } from "react-router-dom";
 
 /** Part One */
 // interface Props {
@@ -36,12 +37,15 @@ import useGameQueryStore from "../services/22-store";
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
+  /** Part three - 22-Exercise-Fixing the NavBar */
+  const navigate = useNavigate();
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
         if (ref.current) setSearchText(ref.current.value);
+        navigate("/");
       }}
     >
       <InputGroup>
