@@ -2,15 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import genres from "../data/36-genres";
 import ms from "ms";
 import APIClient from "../services/9-api-client";
+import { Genre } from "../entities/Genre";
 
 /** Advanced - 28-Exercise-Creating a Reusable API Client */
 const apiClient = new APIClient<Genre>("/genres");
-
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
 
 /** 36-Shipping Static Data -- can also be applied to Platform drop down list*/
 // const useGenres = () => useData<Genre>("/genres"); -- change to:
