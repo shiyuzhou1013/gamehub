@@ -2,7 +2,7 @@ import platforms from "../data/36-platforms";
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/9-api-client";
 import ms from "ms";
-import { Platform } from "../entities/Platform";
+import Platform from "../entities/Platform";
 
 /** Advanced - 28-Exercise-Creating a Reusable API Client */
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");

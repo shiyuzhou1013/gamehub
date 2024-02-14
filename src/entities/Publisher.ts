@@ -1,4 +1,4 @@
-export interface Publishers {
+export default interface Publishers {
   id: number;
   name: string;
 }
