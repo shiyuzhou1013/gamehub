@@ -4,7 +4,7 @@ import ColorModeSwitch from "./8-ColorModeSwitch";
 import SearchInput from "./30-SearchInput";
 import { Link } from "react-router-dom";
 
-/** Part One*/
+/** Part One */
 // interface Props {
 //   onSearch: (searchText: string) => void;
 // }
