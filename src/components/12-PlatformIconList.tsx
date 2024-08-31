@@ -19,7 +19,6 @@ interface Props {
 
 const PlatformIconList = ({ platforms }: Props) => {
   {
-    /* use React icons library : npm i react-icons@4.7.1 */
   }
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,

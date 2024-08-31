@@ -1,4 +1,3 @@
-/** 28-Handing Games without an Image */
 import noImage from "../assets/no-image-placeholder-6f3882e0.webp";
 
 const getCroppedImageUrl = (url: string) => {

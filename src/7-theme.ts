@@ -4,7 +4,6 @@ const config: ThemeConfig = {
   initialColorMode: "dark",
 };
 
-/** 37-Customizing the Chakra Theme */
 const theme = extendTheme({
   config,
   colors: {

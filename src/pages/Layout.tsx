@@ -1,5 +1,3 @@
-/** 13-Setting Up Routing */
-
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/6-NavBar";
 import { Box } from "@chakra-ui/react";
