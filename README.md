@@ -18,3 +18,5 @@ React.js, TypeScript, Axios, Chakra UI
 
 # Game Detail Page
 ![alt text](detail.png)
+
+#
